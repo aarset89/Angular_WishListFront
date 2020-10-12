@@ -29,15 +29,8 @@ ion-list {
   background-color: #222428 !important;
 }
 
-ion-toolbar {
-  background-color: #222428 !important;
-  color: #e00c0c !important;
+.tab-selected{
+    color: #5260ff;
+    border-radius: 20%;
 }
-ion-content {
-  background-color: #222428 !important;
-}
-
-ion-item {
-  background-color: #222428 !important;
-  color: #222428 !important;
-}
+ 
