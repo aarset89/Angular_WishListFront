@@ -1,10 +1,40 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>Add List</ion-title>
+<ion-header class="ion-no-border">
+  <ion-toolbar color="dark">
+    <ion-buttons slot="start">
+      <ion-back-button color="tertiary" defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ list.title}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="padding">
-  <h1>Add Page</h1>
+<ion-content color="dark">
+  <ion-list>
+    <ion-item color="dark">
+      <ion-label position="floating">Nueva tarea</ion-label>
+      <ion-input
+        [(ngModel)]="itemName"
+        (keyup.enter)="createNewItem()"
+        color="dark"
+      ></ion-input>
+    </ion-item>
+  </ion-list>
 
+  <ion-list>
+    <ion-item-sliding *ngFor="let item of list.items; let i = index;">
+      <ion-item color="dark">
+        <ion-label>{{ item.Desc }}</ion-label>
+        <ion-checkbox
+          (ionChange)="changeTaskStatus(item)"
+          [(ngModel)]="item.Completado"
+          color="tertiary"
+          slot="start"
+        ></ion-checkbox>
+      </ion-item>
+      <ion-item-options side="end">
+        <ion-item-option (click)="deleteTask(i)" color="danger"
+          ><ion-icon name="close" slot="icon-only"></ion-icon
+        ></ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
 </ion-content>

@@ -5,23 +5,41 @@ import { List } from '../models/list.model';
   providedIn: 'root'
 })
 export class WishesService {
-  
-  
+
+
   lists: List[] = [];
 
-  constructor() { 
+  constructor() {
     console.log("Service started!")
 
-    const list1 = new List("Title list one");
-    const list2 = new List("title list two");
-
-
-    this.lists.push(list1,list2);
-
-console.log(this.lists);
+    this.readLists();
   }
 
+  createNewList(title: string) {
+
+    const newList = new List(title);
+    this.lists.push(newList)
+    this.saveList();
+
+    return newList.id;
+  }
+
+  loadList(listId: string | number) {
+    listId = Number(listId);
+
+    return this.lists.find(l => l.id === listId);
+  }
+
+  saveList() {
+    localStorage.setItem('data', JSON.stringify(this.lists));
+  }
+
+  readLists() {
+    if (localStorage.getItem('data')) {
+      this.lists = JSON.parse(localStorage.getItem('data'));
+    }
 
 
+  }
 
 }

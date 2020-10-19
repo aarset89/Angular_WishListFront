@@ -1,11 +1,11 @@
-export class ItemList{
-    desc:string;
-    completado:boolean;
+export class ItemList {
+    Desc: string;
+    Completado: boolean;
 
-constructor(desc:string) {
-    
-this.desc = desc;
-this.completado = false;
-}
+    constructor(desc: string) {
+
+        this.Desc = desc;
+        this.Completado = false;
+    }
 
 }
